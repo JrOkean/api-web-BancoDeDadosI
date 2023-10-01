@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UsuarioController extends Controller
 {
     private $objUser;
     public function __construct(){
-
+        $this->objUser = new User();
     }
 
     public function index()
     {
-        return view('Usuario/index');
+        $Users = $this->objUser->all();
+        return view(view:'Usuario/index', compact('Users'));
     }
 
     /**

@@ -13,7 +13,15 @@
             </tr>
         </thead>
         <tbody>
-            
+            @foreach($Users as $User)
+                {{$User->user_name}}
+            @endforeach()
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mto</td>
+        </tr>
         </tbody>
         </table>
     </div>
