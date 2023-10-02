@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Models\ModelUsuario as ModelsModelUsuario;
 use Illuminate\Http\Request;
 use App\Models\ModelUsuario;
-use App\Models\ModelPerfil;
 
 class UsuarioController extends Controller
-{
+{   
     private $objUser;
-    private $objPerfil;
     public function __construct(){
         $this->objUser = new ModelUsuario();
-        $this->objPerfil = new ModelPerfil();
     }
 
     public function index()
@@ -24,19 +20,20 @@ class UsuarioController extends Controller
 
     public function create()
     {
-        $usuarios = $this->objUser->all();
-        return view('Usuario/create', compact(''));
+        return view('Usuario/create');
     }
 
     public function store(Request $request)
     {
-        $this->objUser->create([
-            'user_name'=>$request->nickname,
+        $cadastro=$this->objUser->create([
+            'user_name'=>$request->user_name,
             'senha'=>$request->senha,
-            'primeiro_nome'=>$request->nome,
+            'primeiro_nome'=>$request->primeiro_nome,
             'sobrenome'=>$request->sobrenome
         ]);
-        return redirect('/usuarios');
+        if($cadastro){
+            redirect('/usuarios');
+        }
     }
 
     public function show(string $id)
@@ -47,16 +44,35 @@ class UsuarioController extends Controller
 
     public function edit(string $id)
     {
-        //
+        $usuario = $this->objUser->find($id);
+        return view('Usuario\create', compact('usuario'));
     }
 
     public function update(Request $request, string $id)
     {
-        //
+        $this->objUser->where(['id_usuario'=>$id])->update([
+            'user_name'=>$request->user_name,
+            'senha'=>$request->senha,
+            'primeiro_nome'=>$request->primeiro_nome,
+            'sobrenome'=>$request->sobrenome
+        ]);
+        return redirect('api/usuarios');
     }
 
     public function destroy(string $id)
     {
-        //
+        $usuario = $this->objUser->find($id);
+        if (!$usuario) {
+            return redirect()->back()->with('error', 'Usuário não encontrado.');
+        }
+        $usuario->delete();
+        return redirect()->route('usuarios.index')->with('success', 'Usuário excluído com sucesso.');
+    }
+
+    public function cria_blog($id){
+
+        $usuario = $this->objUser->find($id);
+        return view('Usuario\show', compact('usuario'));
+        
     }
 }

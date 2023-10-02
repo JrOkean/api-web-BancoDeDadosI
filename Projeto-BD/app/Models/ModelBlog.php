@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ModelUsuario extends Model
+class ModelBlog extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $table="usuario_versao.usuario";
-    protected $primaryKey = 'id_usuario';
+
+    protected $table="usuario_versao.blog";
+    protected $primaryKey= 'id_blog';
 
     protected $fillable = [
-        'user_name',
-        'senha',
-        'primeiro_nome',
-        'sobrenome',
+        'data_criacao',
+        'titulo',
+        'assunto'
     ];
 }

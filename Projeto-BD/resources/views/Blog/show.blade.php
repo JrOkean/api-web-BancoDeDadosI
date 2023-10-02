@@ -3,13 +3,11 @@
 @section('content')
 <h1 class="text-center"> Visualizar </h1></hr>
 <div class="col-8 m-auto">
-    ID: {{$usuario->id_usuario}} <hr>
-    Nick: {{$usuario->user_name}} <hr>
-    Nome: {{$usuario->primeiro_nome}} <hr>
-    Sobrenome: {{$usuario->sobrenome}} <hr>
-    Senha: {{$usuario->senha}} <hr>
-        
-    <a href="{{ route('blog.create') }}" class="btn btn-success">Criar Blog</a>
+    ID: {{$blog->id_blog}} <hr>
+    Data de Criação: {{$blog->data_criacao}} <hr>
+    Título: {{$blog->titulo}} <hr>
+    Assunto: {{$blog->assunto}} <hr>
+    <!--Autor: {{$blog->senha}} <hr>-->
 
     <form action="{{route('usuario.destroy', $usuario->id_usuario)}}" method="post">
         @csrf

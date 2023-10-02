@@ -2,9 +2,8 @@
 
 @section('content')
 <h1 class="text-center"> Usuários </h1></hr>
-  <a href="{{url('/usuarios/create')}}">
-
 <div class="col-8 m-auto">
+@csrf
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -20,7 +19,7 @@
             <td>{{ $user->user_name }}</td>
             <td>{{ $user->primeiro_nome }}</td>
             <td>{{ $user->sobrenome }}</td>
-        @endforeach()
+        @endforeach
   </tbody>
 </table>
 </div>
