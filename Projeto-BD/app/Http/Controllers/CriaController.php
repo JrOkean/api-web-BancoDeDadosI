@@ -28,7 +28,6 @@ class CriaController extends Controller
     }
     public function create($id_usuario, $id_blog)
     {
-        //
     }
 
     public function store(Request $request)
