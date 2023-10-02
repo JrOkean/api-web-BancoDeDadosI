@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\SegueController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,10 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Rota para as funções de Usuarios:
-Route::get('/usuario', function (){
-    return view('Usuario\index');
-});
+Route::get('/usuarios', [UsuarioController::class, 'index']);
+Route::get('/usuario/{id}', [UsuarioController::class, 'show']);
+Route::get('/usuarios/create', [UsuarioController::class, 'create']);
 
 // Rota para as funções de Perfil:
+Route::get('/perfis', [PerfilController::class, 'index']);
 
 // Rota para as funções de Segue:

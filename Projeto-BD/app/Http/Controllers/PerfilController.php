@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ModelPerfil;
 use Illuminate\Http\Request;
 
 class PerfilController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    private $objPerfil;
+
+    public function __construct(){
+        $this->objPerfil = new ModelPerfil();
+    }
+
     public function index()
     {
-        //
+        $profiles = $this->objPerfil->all();
+        return view('Perfil/index', compact('profiles'));
     }
 
     /**
