@@ -9,7 +9,7 @@
     Assunto: {{$blog->assunto}} <hr>
     <!--Autor: {{$blog->senha}} <hr>-->
 
-    <form action="{{route('usuario.destroy', $usuario->id_usuario)}}" method="post">
+    <form action="{{route('blog.destroy', $blog->id_blog)}}" method="post">
         @csrf
         <input type="submit" class="btn btn-danger" value="Deletar">
     </form>

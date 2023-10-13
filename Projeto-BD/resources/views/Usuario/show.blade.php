@@ -9,9 +9,9 @@
     Sobrenome: {{$usuario->sobrenome}} <hr>
     Senha: {{$usuario->senha}} <hr>
         
-    <a href="{{ route('blog.create') }}" class="btn btn-success">Criar Blog</a>
+    <a href="{{ route('blog.crie') }}" class="btn btn-success">Criar Blog</a>
 
-    <form action="{{route('usuario.destroy', $usuario->id_usuario)}}" method="post">
+    <form action="{{route('usuarios.destroy', $usuario->id_usuario)}}" method="post">
         @csrf
         <input type="submit" class="btn btn-danger" value="Deletar">
     </form>

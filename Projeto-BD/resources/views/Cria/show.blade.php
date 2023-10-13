@@ -9,14 +9,17 @@
     Nick: {{ $criacao->perfilCria->user_name }} <hr>
 
     @if($criacao->blogCriado)
-        @foreach($criacao->blogCriado as $blog)
-        ID Blog: {{ $blog->id_blog }} <hr>
-        Título: {{ $blog->titulo }} <hr>
-        @endforeach
+        @if(is_array($criacao->blogCriado))
+            @foreach($criacao->blogCriado as $blog)
+            ID Blog: {{ $blog->id_blog }} <hr>
+            Título: {{ $blog->titulo }} <hr>
+            @endforeach
+        @else
+            Sem blogs relacionados <hr>
+        @endif
     @else
         Sem blogs relacionados <hr>
     @endif
-
     <a href="{{ route('usuarios.destroy', $criacao->perfilCria->id_usuario) }}" class="btn btn-danger"
         onclick="return confirm('Tem certeza que deseja excluir este usuário?')">Excluir</a>
     @endforeach
